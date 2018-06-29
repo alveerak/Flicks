@@ -54,4 +54,9 @@ public class MovieDetailsActivity extends AppCompatActivity{
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
         Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", movie.getTitle()));
     }
+
+    /*public void onAddItem(View v) {
+        Intent i = new Intent (this, MovieTrailerActivity.class);
+        startActivity(i);
+    }*/
 }

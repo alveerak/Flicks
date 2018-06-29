@@ -96,6 +96,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // track view objects
+        //@BindView(R.id.ivPosterImage) ImageView ivPosterImage;
+        //@BindView(R.id.ivBackdropImage)ImageView ivBackdropImage;
+        //@BindView(R.id.tvTitle) TextView tvTitle;
+        //@BindView(R.id.tvOverview) TextView tvOverview;
         ImageView ivPosterImage;
         ImageView ivBackdropImage;
         TextView tvTitle;
@@ -103,6 +107,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            // itemView.setOnClickListener(this);
             // lookup view objects by id TODO bindview stuff
             ivPosterImage = (ImageView) itemView.findViewById(R.id.ivPosterImage);
             ivBackdropImage = (ImageView) itemView.findViewById(R.id.ivBackdropImage);
