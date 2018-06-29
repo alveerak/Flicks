@@ -7,27 +7,22 @@
     tools:context=".MovieDetailsActivity"
     android:background="@color/charcoal">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+    <ImageView
+        android:id="@+id/backgroundPic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Movie Title"
-        android:textAppearance="@android:style/TextAppearance.Large"
-        android:textColor="#ffffff"
-        tools:layout_alignParentRight="true"
-        tools:layout_alignParentEnd="true" />
+        app:srcCompat="@drawable/flicks_movie_placeholder" />
 
     <RatingBar
         android:id="@+id/rbVoteAverage"
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvTitle"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="222dp"
         android:numStars="5"
         android:stepSize="0.5" />
 
@@ -35,24 +30,42 @@
         android:id="@+id/tvOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_below="@+id/rbVoteAverage"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="#ffffff"
-        android:scrollbars="vertical"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rbVoteAverage"
+        android:scrollbars="vertical"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#ffffff" />
 
-    <!--
+
     <Button
         android:id="@+id/trailer_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/rbVoteAverage"
+        android:layout_marginBottom="213dp"
+        android:onClick="onAddItem"
+        android:text="Trailer" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvOverview"
-        android:text="Trailer"
-        android:onClick="onAddItem"/>
-     -->
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="191dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Movie Title"
+        android:textAlignment="center"
+        android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        tools:layout_alignParentEnd="true"
+        tools:layout_alignParentRight="true" />
 
 </RelativeLayout>

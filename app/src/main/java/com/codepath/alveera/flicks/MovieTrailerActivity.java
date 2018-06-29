@@ -2,6 +2,7 @@ package com.codepath.alveera.flicks;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.codepath.alveera.flicks.models.Movie;
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -58,21 +59,27 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
         client.get(url, params, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                boolean got_trailer = false;
                 // load the results into movies list
                 try {
                     JSONArray results = response.getJSONArray("results");
-                    // iterate through result set and create Movie obejcts
+                    // set default.
                     JSONObject trailer_first = results.getJSONObject(0);
                     videoId = trailer_first.getString("key");
+                    // iterate through result set and create Movie obejcts
                     for (int i = 0; i < results.length(); i++) {
                         JSONObject list = results.getJSONObject(i);
                         String type = list.getString("type");
                         if (type.equals("Trailer")) {
                             videoId = list.getString("key");
+                            got_trailer = true;
                             break;
                         }
                         Log.i(TAG, String.format("We got the key %s", videoId));
-                        loadTrailer();
+                    }
+                    loadTrailer();
+                    if (got_trailer == false) {
+                        Toast.makeText(getApplicationContext(), "No trailer, go back", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     Log.i(TAG,"Failed to get video");

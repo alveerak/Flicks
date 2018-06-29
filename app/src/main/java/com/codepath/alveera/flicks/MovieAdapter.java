@@ -3,6 +3,7 @@ package com.codepath.alveera.flicks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -27,6 +30,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     Config config;
     // context for rendering
     Context context;
+
+    public static final String imageURL_background = "imageUrl_background";
 
     // initialize with list
     public MovieAdapter(ArrayList <Movie> movies) {
@@ -95,27 +100,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     // create the viewholder as a static inner class
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // track view objects
-        //@BindView(R.id.ivPosterImage) ImageView ivPosterImage;
-        //@BindView(R.id.ivBackdropImage)ImageView ivBackdropImage;
-        //@BindView(R.id.tvTitle) TextView tvTitle;
-        //@BindView(R.id.tvOverview) TextView tvOverview;
-        ImageView ivPosterImage;
-        ImageView ivBackdropImage;
-        TextView tvTitle;
-        TextView tvOverview;
+        // track view objects and look up by id
+        @Nullable @BindView(R.id.ivPosterImage) ImageView ivPosterImage;
+        @Nullable @BindView(R.id.ivBackdropImage)ImageView ivBackdropImage;
+        @BindView(R.id.tvTitle) TextView tvTitle;
+        @BindView(R.id.tvOverview) TextView tvOverview;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            // itemView.setOnClickListener(this);
-            // lookup view objects by id TODO bindview stuff
-            ivPosterImage = (ImageView) itemView.findViewById(R.id.ivPosterImage);
-            ivBackdropImage = (ImageView) itemView.findViewById(R.id.ivBackdropImage);
-            tvOverview = (TextView) itemView.findViewById(R.id.tvOverview);
-            tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
-            //ButterKnife.bind(this, itemView);
             // add this as the itemView's OnClickListener
             itemView.setOnClickListener(this);
+            // lookup view objects by id
+            ButterKnife.bind(this, itemView);
         }
 
         // when the user clicks on a row, show MovieDetailsActivity for the selected Movie
@@ -132,6 +128,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 Intent intent = new Intent(context, MovieDetailsActivity.class);
                 // serialize the movie using parceler, use its short name as a key
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
+                // serialize the image
+                intent.putExtra(imageURL_background, config.getImageUrl(config.getPosterSize(), movie.getPosterPath()));
                 // show the activity
                 context.startActivity(intent);
             }
