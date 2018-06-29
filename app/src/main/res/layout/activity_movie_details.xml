@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieDetailsActivity">
+    tools:context=".MovieDetailsActivity"
+    android:background="@color/charcoal">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -15,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:text="Movie Title"
         android:textAppearance="@android:style/TextAppearance.Large"
+        android:textColor="#ffffff"
         tools:layout_alignParentRight="true"
         tools:layout_alignParentEnd="true" />
 
@@ -39,6 +41,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:textColor="#ffffff"
         android:scrollbars="vertical"/>
 
     <!--
