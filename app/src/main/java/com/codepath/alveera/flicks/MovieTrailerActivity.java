@@ -81,6 +81,9 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
                     if (got_trailer == false) {
                         Toast.makeText(getApplicationContext(), "No trailer, go back", Toast.LENGTH_LONG).show();
                     }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Welcome to the trailer!", Toast.LENGTH_LONG).show();
+                    }
                 } catch (JSONException e) {
                     Log.i(TAG,"Failed to get video");
                 }
