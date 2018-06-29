@@ -12,6 +12,7 @@ public class Movie {
     public String posterPath; // only the path
     public String backdropPath;
     public Double voteAverage; // average ratings from all users on a scale from 0 to 10 inclusive
+    public Integer id;
 
     // no-arg, empty constructor required for Parceler
     public Movie() {}
@@ -23,7 +24,9 @@ public class Movie {
         posterPath = object.getString("poster_path");
         backdropPath = object.getString("backdrop_path");
         voteAverage = object.getDouble("vote_average");
+        id = object.getInt("id");
     }
+
 
     public String getTitle() {
         return title;
@@ -43,6 +46,10 @@ public class Movie {
 
     public Double getVoteAverage() {
         return voteAverage;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }
 

@@ -103,11 +103,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            // lookup view objects by id
+            // lookup view objects by id TODO bindview stuff
             ivPosterImage = (ImageView) itemView.findViewById(R.id.ivPosterImage);
             ivBackdropImage = (ImageView) itemView.findViewById(R.id.ivBackdropImage);
             tvOverview = (TextView) itemView.findViewById(R.id.tvOverview);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            //ButterKnife.bind(this, itemView);
             // add this as the itemView's OnClickListener
             itemView.setOnClickListener(this);
         }
@@ -122,7 +123,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 // get the movie at the position, this won't work if the class is static
                 Movie movie = movies.get(position);
                 // create intent for the new activity
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                //TODO change back to movies detail activity
+                Intent intent = new Intent(context, MovieTrailerActivity.class);
                 // serialize the movie using parceler, use its short name as a key
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
                 // show the activity
