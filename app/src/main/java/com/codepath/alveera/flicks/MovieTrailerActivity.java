@@ -69,8 +69,8 @@ public class MovieTrailerActivity extends YouTubeBaseActivity {
                     // iterate through result set and create Movie obejcts
                     for (int i = 0; i < results.length(); i++) {
                         JSONObject list = results.getJSONObject(i);
-                        String type = list.getString("type");
-                        if (type.equals("Trailer")) {
+                        String temp = list.getString("type");
+                        if (temp.equals("Trailer")) {
                             videoId = list.getString("key");
                             got_trailer = true;
                             break;
